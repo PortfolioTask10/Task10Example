@@ -1,0 +1,58 @@
+/** Roman Numeral system class **/
+import java.util.Scanner;
+
+public class RomanNumberal {
+    public static void main(String[] args){
+        System.out.println("Please enter a positive number: ");
+        Scanner scan = new Scanner(System.in);
+        String romanStr ="";
+        int number = scan.nextInt(); 
+         if((number >= 1)&&(number <=3999)){
+             romanStr = intToRoman(number);
+             System.out.print("Number "+number+" is "+romanStr+" in Roman Numeral"); 
+             }
+             else{
+                 System.out.println("Your number is not in the range (1 to 4000). Please try again. ");
+                }
+    }
+    public static String intToRoman(int number) {
+        String ones = romanDigit(number % 10, "I", "V", "X");
+        number /= 10;
+        String tens = romanDigit(number % 10, "X", "L", "C");
+        number /= 10;
+        String hundreds = romanDigit(number % 10, "C", "D", "M");
+        number /= 10;
+        String thousands = romanDigit(number % 10, "M", "M", "M");
+        return thousands + hundreds + tens + ones;
+    }
+     public static String romanDigit(int number, String one, String five, String ten) {
+        if (number == 1) {
+            return one;
+        }
+        if (number == 2) {
+            return one + one;
+        }
+        if (number == 3) {
+            return one + one + one;
+        }
+        if (number == 4) {
+            return one + five;
+        }
+        if (number == 5) {
+            return five;
+        }
+        if (number == 6) {
+            return five + one;
+        }
+        if (number == 7) {
+            return five + one + one;
+        }
+        if (number == 8) {
+            return five + one + one + one;
+        }
+        else {
+        return one + ten;
+    }
+   }
+    
+}
